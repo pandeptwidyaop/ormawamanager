@@ -12,6 +12,7 @@ class KeanggotaansTableSeeder extends Seeder
     public function run()
     {
         DB::table('keanggotaans')->insert([
+          'ormawa_id' => 1,
           'anggota_id' => 1,
           'periode_id' => 1
         ]);

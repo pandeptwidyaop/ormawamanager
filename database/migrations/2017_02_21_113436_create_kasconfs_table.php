@@ -15,12 +15,15 @@ class CreateKasconfsTable extends Migration
     {
         Schema::create('kasconfs', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('ormawa_id')->unsigned();
             $table->integer('periode_id')->unsigned();
             $table->integer('uang_kas')->default(0);
             $table->timestamps();
         });
         Schema::table('kasconfs', function(Blueprint $table) {
           $table->foreign('periode_id')->references('id')->on('periodes')->onUpdate('cascade')->onDelete('cascade');
+          $table->foreign('ormawa_id')->references('id')->on('ormawas')->onUpdate('cascade')->onDelete('cascade');
+
         });
     }
 

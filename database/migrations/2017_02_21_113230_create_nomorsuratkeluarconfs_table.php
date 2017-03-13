@@ -15,6 +15,7 @@ class CreateNomorsuratkeluarconfsTable extends Migration
     {
         Schema::create('nomorsuratkeluarconfs', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('ormawa_id')->unsigned();
             $table->integer('periode_id')->unsigned();
             $table->integer('current')->default(0);
             $table->string('letter')->default('/HIMAPRODI.SI/SEMA.STIKOM/');
@@ -22,6 +23,8 @@ class CreateNomorsuratkeluarconfsTable extends Migration
         });
         Schema::table('nomorsuratkeluarconfs', function(Blueprint $table) {
           $table->foreign('periode_id')->references('id')->on('periodes')->onUpdate('cascade')->onDelete('cascade');
+          $table->foreign('ormawa_id')->references('id')->on('ormawas')->onUpdate('cascade')->onDelete('cascade');
+
         });
     }
 

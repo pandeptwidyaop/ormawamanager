@@ -15,8 +15,12 @@ class CreateBidangkegiatansTable extends Migration
     {
         Schema::create('bidangkegiatans', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('ormawa_id')->unsigned();
             $table->string('bidangkegiatan');
             $table->timestamps();
+        });
+        Schema::table('bidangkegiatans', function(Blueprint $table){
+          $table->foreign('ormawa_id')->references('id')->on('ormawas')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

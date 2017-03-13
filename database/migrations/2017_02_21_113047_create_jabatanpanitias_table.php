@@ -15,9 +15,13 @@ class CreateJabatanpanitiasTable extends Migration
     {
         Schema::create('jabatanpanitias', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('ormawa_id')->unsigned();
             $table->string('jabatanpanitia');
             $table->integer('urut_jabatanpanitia')->default(0);
             $table->timestamps();
+        });
+        Schema::table('jabatanpanitias', function(Blueprint $table){
+          $table->foreign('ormawa_id')->references('id')->on('ormawas')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

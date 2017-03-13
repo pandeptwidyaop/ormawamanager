@@ -13,7 +13,8 @@ class PeriodesTableSeeder extends Seeder
     public function run()
     {
         DB::table('periodes')->insert([
-          'periode' => '2015/2016'
+          ['periode' => '2015/2016'],
+          ['periode' => '2016/2017']
         ]);
     }
 }
